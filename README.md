@@ -1,10 +1,6 @@
 ﻿iputil一个ip工具类
 -------------
 
- 
-
-函数
-===
 
 * IsCidr&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    判断ip是否是c类和b类地址
 * Ips&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        将ip段转换为IP  
