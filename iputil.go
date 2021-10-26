@@ -3,9 +3,8 @@ package iputil
 import (
 	"errors"
 	"fmt"
-	"net"
-
 	"github.com/d1937/logger"
+	"net"
 )
 
 // IsCidr determines if the given ip is a cidr range
@@ -13,6 +12,24 @@ func IsCidr(ip string) bool {
 	_, _, err := net.ParseCIDR(ip)
 
 	return err == nil
+}
+
+func IpCidrContains(ip string, cidr string) bool {
+
+	if !IsIP(ip) {
+		return false
+	}
+
+	_, ips, err := net.ParseCIDR(cidr)
+	if err != nil {
+		return false
+	}
+
+	if ips.Contains(net.ParseIP(ip)) {
+		return true
+	}
+
+	return false
 }
 
 /*
