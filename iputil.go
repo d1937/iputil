@@ -32,6 +32,15 @@ func IpCidrContains(ip string, cidr string) bool {
 	return false
 }
 
+//判断是否是内网IP
+func IsPrivate(ipaddr string) bool {
+	ip := net.ParseIP(ipaddr)
+	if ip4 := ip.To4(); ip4 != nil {
+		return ip4[0] == 10 || (ip4[0] == 172 && ip4[1]&0xf0 == 16) || (ip4[0] == 192 && ip4[1] == 168)
+	}
+	return len(ip) == net.IPv6len && ip[0]&0xfe == 0xfc
+}
+
 /*
 CIDR
 x.0.0.0/y   -> 192.0.0.0/24
